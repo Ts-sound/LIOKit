@@ -3,12 +3,13 @@
         {
             "name": "Linux",
             "includePath": [
-                "${workspaceFolder}/src/3rdparty/vcpkg_export/installed/**"
+                "${workspaceFolder}/src/LIOKit/include",
+                "${workspaceFolder}/src/LIOKit/vcpkg_installed/x64-linux/include/**"
             ],
             "defines": [],
             "compilerPath": "/usr/bin/clang",
             "cStandard": "c17",
-            "cppStandard": "c++14",
+            "cppStandard": "c++17",
             "intelliSenseMode": "linux-clang-x64"
         }
     ],

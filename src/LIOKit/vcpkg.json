@@ -1,6 +1,7 @@
 {
   "dependencies": [
-    "gtsam"
+    "gtsam",
+    "pcl"
   ],
   "overrides": [
     {
