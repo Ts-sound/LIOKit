@@ -43,4 +43,4 @@
 ###
 src/**/vcpkg_installed/*
 src/**/vcpkg_export/*
-src/**/build/
+build/
