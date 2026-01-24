@@ -1,0 +1,27 @@
+{
+  "dependencies": [
+    "gtsam"
+  ],
+  "overrides": [
+    {
+      "name": "boost",
+      "version": "1.90.0"
+    },
+    {
+      "name": "eigen3",
+      "version": "5.0.1"
+    },
+    {
+      "name": "gklib",
+      "version": "2025-07-06"
+    },
+    {
+      "name": "metis",
+      "version": "2025-07-04"
+    },
+    {
+      "name": "tbb",
+      "version": "2022.3.0"
+    }
+  ]
+}

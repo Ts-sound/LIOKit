@@ -1,0 +1,77 @@
+{
+    "files.exclude": {
+        ".gitignore": false,
+        "build": true,
+        "run": true,
+        "log": true,
+        "src/**/vcpkg_export": true,
+        "src/**/vcpkg_installed": true
+    },
+    "doxdocgen.file.versionTag": "@version 1.0.0",
+    "doxdocgen.generic.authorEmail": "1564264931@qq.com",
+    "doxdocgen.generic.authorName": "tong",
+    "doxdocgen.generic.authorTag": "@author {author}",
+    "doxdocgen.file.copyrightTag": [
+        "tong Copyright (c) {year}"
+    ],
+    "files.autoSave": "onFocusChange",
+    "editor.formatOnSave": true,
+    "xml.format.maxLineWidth": 0,
+    "todo-tree.general.rootFolder": "${workspaceFolder}/",
+    "todo-tree.tree.scanMode": "workspace",
+    "todo-tree.general.statusBar": "total",
+    "todo-tree.filtering.ignoreGitSubmodules": true,
+    "plantuml.jar": "/opt/tong/dotfiles/vscode/assets/",
+    "plantuml.exportFormat": "svg",
+    "plantuml.exportConcurrency": 1,
+    "markdownlint.config": {
+        "MD007": {
+            "indent": 4
+        },
+        "MD010": false,
+        "MD029": false,
+        "MD033": false,
+        "MD034": false,
+        "MD045": false
+    },
+    "bookmarks.saveBookmarksInProject": true,
+    "commentTranslate.source": "Bing",
+    "commentTranslate.maxTranslationLength": 200,
+    "commentTranslate.targetLanguage": "zh-CN",
+    "commentTranslate.hover.string": true,
+    "commentTranslate.hover.variable": true,
+    "commentTranslate.hover.concise": true,
+    "markdown-preview-enhanced.plantumlJarPath": "/opt/tong/dotfiles/vscode/assets/plantuml.jar",
+    "yaml.schemas": {
+        "https://squidfunk.github.io/mkdocs-material/schema.json": "mkdocs.yml"
+    },
+    "yaml.customTags": [
+        "!ENV scalar",
+        "!ENV sequence",
+        "!relative scalar",
+        "tag:yaml.org,2002:python/name:material.extensions.emoji.to_svg",
+        "tag:yaml.org,2002:python/name:material.extensions.emoji.twemoji",
+        "tag:yaml.org,2002:python/name:pymdownx.superfences.fence_code_format",
+        "tag:yaml.org,2002:python/object/apply:pymdownx.slugs.slugify mapping"
+    ],
+    "mermaid-editor.generate.quality": 1024,
+    "mermaid-editor.generate.scale": 1,
+    "mermaid-editor.generate.type": "svg",
+    "C_Cpp.clang_format_fallbackStyle": "Google",
+    "C_Cpp.clang_format_style": "{ BasedOnStyle: Google,  IndentWidth: 2, TabWidth: 2, BreakBeforeBraces: Attach, AllowShortIfStatementsOnASingleLine: true, IndentCaseLabels: false, ColumnLimit: 140, AccessModifierOffset: -4, NamespaceIndentation: None, FixNamespaceComments: false }",
+    "black-formatter.args": [
+        "--line-length",
+        "300",
+        "--skip-string-normalization"
+    ],
+    "python.testing.unittestArgs": [
+        "-v",
+        "-s",
+        "./vscode/scripts/",
+        "-p",
+        "*test.py"
+    ],
+    "python.testing.pytestEnabled": false,
+    "python.testing.unittestEnabled": true,
+    "black-formatter.importStrategy": "fromEnvironment"
+}
