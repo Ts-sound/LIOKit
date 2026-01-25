@@ -1,5 +1,8 @@
 #pragma once
 
+#include <deque>
+#include <mutex>
+
 //
 #include <gtsam/geometry/Pose3.h>
 #include <gtsam/geometry/Rot3.h>
@@ -17,14 +20,14 @@
 
 //
 
-#include "liokit/data/imu_data.h"
+#include "inner/imu_data_inner.h"
 
 namespace liokit {
 
 class ImuPreintegration {
   public:
   struct Option {
-    double period_ms = 0.002;   // 1/HZ
+    double period_s = 0.002;    // 1/HZ
     double imu_gravity = 9.81;  //
     double imu_acc_noise = 1e-4;
     double imu_gyr_noise = 1e-4;
@@ -38,17 +41,27 @@ class ImuPreintegration {
   public:
   void OnOdometryData(gtsam::Pose3 &pose, double timestamp);
 
-  gtsam::NavState OnImuData(const gtsam::Vector3 &acc, const gtsam::Vector3 &omega, double timestamp);
+  std::optional<gtsam::NavState> OnImuData(const ImuDataInnerConstPtr &imu_data);
 
   private:
   void ResetOptimization();
   void ResetParams();
+  void ResetFactorGraph();
+
+  void InitOptimization();
+
+  bool FailureDetection(const gtsam::Vector3 &vel, const gtsam::imuBias::ConstantBias &bias);
 
   private:
   typedef std::unique_ptr<gtsam::PreintegratedImuMeasurements> ImuIntegratorUptr;
   typedef gtsam::noiseModel::Diagonal::shared_ptr NoisePtr;
 
   Option option_;
+
+  // tf
+  gtsam::Pose3 tf_imu2lidar_;
+  // tramsform points from imu frame to lidar frame
+  gtsam::Pose3 tf_lidar2imu_ ;
 
   private:
   NoisePtr prior_pose_noise_;
@@ -63,8 +76,10 @@ class ImuPreintegration {
 
   //
 
-  // std::deque<sensor_msgs::Imu> imuQueOpt;
-  // std::deque<sensor_msgs::Imu> imuQueImu;
+  std::deque<ImuDataInnerConstPtr> imu_queue_imu_;
+  std::deque<ImuDataInnerConstPtr> imu_queue_optim_;
+
+  int key_ = 1;
 
   gtsam::Pose3 pre_pose_;
   gtsam::Vector3 pre_vel_;
@@ -79,10 +94,11 @@ class ImuPreintegration {
   double last_timestamp_imu_ = -1.;
   double last_timestamp_opt_ = -1.;
 
-
   gtsam::ISAM2 optimizer_;
   gtsam::NonlinearFactorGraph factor_graph_;
   gtsam::Values graph_values_;
+
+  std::mutex mtx_;
 };
 
 }
