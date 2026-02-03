@@ -6,7 +6,7 @@ namespace liokit {
 
 using namespace ::gtsam::symbol_shorthand;
 
-ImuPreintegration::ImuPreintegration(Option &option) : option_(option) {
+ImuPreintegration::ImuPreintegration(const Option &option) : option_(option) {
   auto p = gtsam::PreintegrationParams::MakeSharedU(option_.imu_gravity);
   p->accelerometerCovariance = gtsam::Matrix33::Identity(3, 3) * pow(option_.imu_acc_noise, 2);  // acc white noise in continuous
   p->gyroscopeCovariance = gtsam::Matrix33::Identity(3, 3) * pow(option_.imu_gyr_noise, 2);      // gyro white noise in continuous

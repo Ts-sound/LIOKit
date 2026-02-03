@@ -36,7 +36,7 @@ class ImuPreintegration {
   };
 
   public:
-  ImuPreintegration(Option &option);
+  ImuPreintegration(const Option &option);
 
   public:
   void OnOdometryData(gtsam::Pose3 &pose, double timestamp);

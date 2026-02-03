@@ -16,11 +16,11 @@ void QueuePopOld(std::deque<D_PTR>& queue, double timepoint) {
   }
 }
 
-template <class D_PTR>
-void QueuePopOldWithHandle(std::deque<D_PTR>& queue, double timepoint, std::function<void(const D_PTR&)> handle) {
+template <typename Container, typename Handler>
+void QueuePopOldWithHandle(Container& queue, double timepoint, Handler&& handler) {
   while (!queue.empty()) {
     if (queue.front()->timestamp < timepoint) {
-      handle(queue.front());
+      handler(queue.front());
       queue.pop_front();
     } else {
       break;

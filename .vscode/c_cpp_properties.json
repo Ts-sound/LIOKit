@@ -4,7 +4,8 @@
             "name": "Linux",
             "includePath": [
                 "${workspaceFolder}/src/LIOKit/include",
-                "${workspaceFolder}/src/LIOKit/vcpkg_installed/x64-linux/include/**"
+                "${workspaceFolder}/src/LIOKit/vcpkg_installed/x64-linux/include/**",
+                "${workspaceFolder}/src/LIOKit/src/"
             ],
             "defines": [],
             "compilerPath": "/usr/bin/clang",

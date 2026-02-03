@@ -41,6 +41,6 @@
 *.dwo
 
 ###
-src/**/vcpkg_installed/*
+src/**/vcpkg_installed
 src/**/vcpkg_export/*
 build/
