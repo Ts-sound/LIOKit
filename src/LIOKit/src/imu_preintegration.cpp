@@ -140,15 +140,12 @@ void ImuPreintegration::InitOptimization() {
 }
 
 bool ImuPreintegration::FailureDetection(const gtsam::Vector3 &vel, const gtsam::imuBias::ConstantBias &bias) {
-  Eigen::Vector3f vel(vel.x(), vel.y(), vel.z());
   if (vel.norm() > 30) {
     // ROS_WARN("Large velocity, reset IMU-preintegration!");
     return true;
   }
 
-  Eigen::Vector3f ba(bias.accelerometer().x(), bias.accelerometer().y(), bias.accelerometer().z());
-  Eigen::Vector3f bg(bias.gyroscope().x(), bias.gyroscope().y(), bias.gyroscope().z());
-  if (ba.norm() > 1.0 || bg.norm() > 1.0) {
+  if (bias.accelerometer().norm() > 1.0 || bias.gyroscope().norm() > 1.0) {
     // ROS_WARN("Large bias, reset IMU-preintegration!");
     return true;
   }
