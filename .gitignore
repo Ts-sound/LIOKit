@@ -48,3 +48,4 @@ temp/
 dataset/campus_small_dataset.bag
 dataset/visualization_results/
 scripts/**/**.pyc
+scripts/lowpass_filter_test.png
