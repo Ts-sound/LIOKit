@@ -44,3 +44,7 @@
 src/**/vcpkg_installed
 src/**/vcpkg_export/*
 build/
+temp/
+dataset/campus_small_dataset.bag
+dataset/visualization_results/
+scripts/**/**.pyc
